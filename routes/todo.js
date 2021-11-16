@@ -2,6 +2,17 @@ const express = require('express');
 const router = express.Router();
 const Todo = require('../models/Todo')
 
+// Show all todos
+router.get('/', (req, res) => {
+    Todo.find().sort({ createdAt: -1 })
+    .then(result => {
+        res.send(result);
+    })
+    .catch(err => {
+        console.log(err);
+    })
+})
+
 // Adding a todo to mongodb database
 router.post('/add', (req, res) => {
     const todo = new Todo(req.body);
@@ -22,7 +33,7 @@ router.put('/update/:id', async (req, res) => {
     const newTodo = {}
     if (title) { newTodo.title = title };
     if (tag) { newTodo.tag = tag };
-    
+
     let todo = await Todo.findByIdAndUpdate(req.params.id, { $set: newTodo }, { new: true })
     res.send('updated');
 })

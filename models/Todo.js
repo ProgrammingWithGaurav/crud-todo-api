@@ -10,7 +10,7 @@ const todoSchema = new Schema({
         type: String,
         default: "general"
     }
-})
+}, { timestamps: true })
 
 const todo = mongoose.model('todo-list', todoSchema)
 

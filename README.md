@@ -7,9 +7,10 @@
 - **express**
 
 # Endpoints
-- **/todo-/add**
-- **/todo-/delete**
-- **/todo-/update**
+- **/todos/** Show All Todos
+- **/todos/add**
+- **/todos/delete**
+- **/todos/update**
 
 
 ## Running Tests
